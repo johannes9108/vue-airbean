@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <section class="about">
     <Header/>
       <article class="content">
@@ -42,10 +43,22 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+=======
+  <div class="aboutView">
+    <Header />
+    <section class="edvardFixingThis"></section>
+    <Footer />
+  </div>
+</template>
+<script>
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+>>>>>>> 07d25479d0556b5969cc422b383c1f97e293dfa9
 export default {
   components: {
     Header,
     Footer
+<<<<<<< HEAD
   },
   data: () => ({
 
@@ -110,4 +123,15 @@ export default {
   }
 }
   
+=======
+  }
+};
+</script>
+<style lang="scss" scoped>
+.aboutView {
+  background-color: #f3e4e1;
+  display: grid;
+  grid-template-rows: 14vh minmax(77vh, auto) 9vh;
+}
+>>>>>>> 07d25479d0556b5969cc422b383c1f97e293dfa9
 </style>

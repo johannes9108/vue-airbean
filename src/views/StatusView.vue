@@ -1,18 +1,14 @@
 <template>
-    <div>status</div>
+  <div class="statusView">status</div>
 </template>
 <script>
 export default {
-    data: () => ({
+  data: () => ({}),
 
-    }),
-    
-    methods: {
-
-    }
-}
+  methods: {},
+  components: {}
+};
 </script>
 
 <style>
-
 </style>
