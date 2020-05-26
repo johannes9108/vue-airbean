@@ -1,21 +1,30 @@
 <template>
-  <section class="landing">
-    <Header />
-    <img :src="require('@/assets/graphics/airbean-landing.svg')" />
-    <img :src="require('@/assets/graphics/graphics-footer.svg')" />
-  </section>
+  <section @click="showMenu()" class="landing"></section>
 </template>
 <script>
-import Header from "../components/Header";
+// import Header from "../components/Header";
 export default {
   data: () => ({}),
 
-  methods: {},
+  methods: {
+    showMenu() {
+      console.log("Öppna Meny via openMenu == true");
+    }
+  },
   components: {
-    Header
+    // Header
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.landing {
+  background-image: url("../assets/graphics/intro-graphic-left.svg"),
+    url("../assets/graphics/airbean-landing.svg"),
+    url("../assets/graphics/intro-graphic-right.svg");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: left, center, right;
+  background-size: contain, auto, contain;
+  height: inherit;
+}
 </style>

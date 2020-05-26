@@ -18,6 +18,14 @@ export default {
 <style lang='scss' scoped>
 .header {
   display: flex;
+  padding: 1rem;
+  justify-content: space-between;
   background-image: url("../assets/graphics/graphics-header.svg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+
+  //   background-size: cover;
+  //   background-image: content-box;
 }
 </style>
