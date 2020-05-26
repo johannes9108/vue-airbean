@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <section class="about">
     <Header/>
       <article class="content">
@@ -43,22 +42,10 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-=======
-  <div class="aboutView">
-    <Header />
-    <section class="edvardFixingThis"></section>
-    <Footer />
-  </div>
-</template>
-<script>
-import Header from "../components/Header";
-import Footer from "../components/Footer";
->>>>>>> 07d25479d0556b5969cc422b383c1f97e293dfa9
 export default {
   components: {
     Header,
     Footer
-<<<<<<< HEAD
   },
   data: () => ({
 
@@ -72,7 +59,9 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  background: #F3E4E1;
+  background-color: #f3e4e1;
+  display: grid;
+  grid-template-rows: 14vh minmax(77vh, auto) 9vh;
   text-align: left;
   
   .content {
@@ -84,7 +73,7 @@ export default {
       font-weight: bold;
       color: #2F2926;
       font-size: 45px;
-      margin: 4rem auto 1rem auto;
+      margin: 2rem auto 1rem auto;
       width: 82%;
     }
 
@@ -123,15 +112,4 @@ export default {
   }
 }
   
-=======
-  }
-};
-</script>
-<style lang="scss" scoped>
-.aboutView {
-  background-color: #f3e4e1;
-  display: grid;
-  grid-template-rows: 14vh minmax(77vh, auto) 9vh;
-}
->>>>>>> 07d25479d0556b5969cc422b383c1f97e293dfa9
 </style>
