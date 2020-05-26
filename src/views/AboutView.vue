@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
+  <div class="aboutView">
     <Header />
-    <div class="test"></div>
+    <section class="edvardFixingThis"></section>
     <Footer />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.about {
+.aboutView {
   background-color: #f3e4e1;
   display: grid;
   grid-template-rows: 14vh minmax(77vh, auto) 9vh;

@@ -1,5 +1,5 @@
 <template>
-  <section @click="showMenu()" class="landing"></section>
+  <section @click="showMenu()" class="landingView"></section>
 </template>
 <script>
 // import Header from "../components/Header";
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.landing {
+.landingView {
   background-image: url("../assets/graphics/intro-graphic-left.svg"),
     url("../assets/graphics/airbean-landing.svg"),
     url("../assets/graphics/intro-graphic-right.svg");

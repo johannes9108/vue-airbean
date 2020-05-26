@@ -13,8 +13,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Landing",
-    component: Landing,
+    redirect: "/landing",
   },
   {
     path: "/about",
@@ -30,11 +29,11 @@ const routes = [
   //   component: () =>
   //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
   // },
-  {
-    path: "/cart",
-    name: "Cart",
-    component: Cart,
-  },
+  // {
+  //   path: "/cart",
+  //   name: "Cart",
+  //   component: Cart,
+  // },
   {
     path: "/landing",
     name: "Landing",
@@ -49,6 +48,7 @@ const routes = [
     path: "/menu",
     name: "Menu",
     component: Menu,
+    children: [{ path: "/cart", name: "Cart", component: Cart }],
   },
   {
     path: "/status",
