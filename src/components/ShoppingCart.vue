@@ -95,6 +95,10 @@ h1{
     align-items: center;
     margin-right: 1rem;
     margin-left: 1rem;
+
+      p{
+        font-size: 0.8rem;
+      }
 }
 
  .names{

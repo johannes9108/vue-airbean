@@ -39,6 +39,22 @@ export default new Vuex.Store({
 
     getItemFromShoppingCartById(state, id){
         return state.coffeeList.filter( (item) => item.id == id); 
+    },
+
+    incrementItemAmount(state,payload){
+      let obj = state.shoppingCart.filter( (item) => item.id == payload.id)[0];
+      obj.amount ++;
+      state.shoppingCartSum += payload.price;
+    },
+
+    decrementItemAmount(state, payload){
+      let obj = state.shoppingCart.filter( (item) => item.id == payload.id)[0];
+      obj.amount --;
+      state.shoppingCartSum -= payload.price;
+
+      if(obj.amount <= 0){
+          state.shoppingCart = state.shoppingCart.filter( (e) => e.id != obj.id);
+      }
     }
   },
   actions: {},

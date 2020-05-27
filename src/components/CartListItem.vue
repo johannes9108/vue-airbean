@@ -28,22 +28,12 @@ export default {
     
     methods: {
 
-        //TODO flytta mycket av dessa funktioner till index.js
-
         incrementItemAmount(){
-            let obj = this.$store.state.shoppingCart.filter( (item) => item.id == this.id)[0];
-            obj.amount ++;
-            this.$store.state.shoppingCartSum += this.price;
+            this.$store.commit('incrementItemAmount', {id: this.id, price: this.price});
         },
 
         decrementItemAmount(){
-            let obj = this.$store.state.shoppingCart.filter( (item) => item.id == this.id)[0];
-            obj.amount --;
-            this.$store.state.shoppingCartSum -= this.price;
-
-            if(obj.amount <= 0){
-                this.$store.state.shoppingCart = this.$store.state.shoppingCart.filter( (e) => e.id != obj.id);
-            }
+            this.$store.commit('decrementItemAmount', {id: this.id, price: this.price});
         }
     },
 
@@ -64,7 +54,7 @@ export default {
         align-items: center;
         margin-left: 1rem;
         margin-right: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .names{
