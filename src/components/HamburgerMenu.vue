@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <button class="hamburgerMenu" v-on:click= "toggleMenu">MENU</button>
-    <div id="menu" v-if="showMenu == true">
+  <transition name="my2-transition" mode="out-in">
+    <div id="menu" v-if="this.$store.state.showMenu == true" @click.capture="toggleMenu()">
       <router-link to="/menu">
         <h1 class="j">MENY</h1>
       </router-link>
@@ -15,17 +14,15 @@
         <h1>ORDERSTATUS</h1>
       </router-link>
     </div>
-  </div>
+  </transition>
 </template>
 <script>
 export default {
-  data: () => ({
-    showMenu: false
-  }),
+  data: () => ({}),
 
   methods: {
     toggleMenu() {
-      this.showMenu = this.showMenu ? false : true;
+      this.$store.commit("toggleMenu");
     }
   }
 };
@@ -44,19 +41,45 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform-origin: center;
 }
 
-.hamburgerMenu {
-  /* position: fixed;
-        left: 2rem;
-        top: 2rem; */
-  z-index: 2;
-  transition: all 0.2s;
+.my-transition-enter-active {
+  transition: all 0.5s ease;
+}
+.my-transition-leave-to {
+  /* .fade-leave-active below version 2.1.8 */
+  transition: all 0.5s linear;
+}
+.my-transition-enter, .my-transition-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  /* transform: scale(0); */
+  transform: translate(-100%);
+}
+.my2-transition-enter-active {
+  animation: whirl 1s forwards;
+  /* transition: all 1s ease; */
+}
+.my2-transition-enter-to {
+  /* background-color: lightblue; */
+}
+.my2-transition-leave-active {
+  /* .fade-leave-active below version 2.1.8 */
+  animation: whirl 1s reverse;
+}
+
+@keyframes whirl {
+  from {
+    transform: rotate(1080deg) scale(0);
+    /* transform: scale(0); */
+  }
+
+  to {
+    transform: rotate(0) scale(1);
+    /* transform: scale(1); */
+  }
 }
 
 h1 {
   color: white !important;
 }
-
-
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <section @click="showMenu()" class="landingView"></section>
+  <transition appear name="fade">
+    <section @click="showMenu()" class="landingView"></section>
+  </transition>
 </template>
 <script>
 // import Header from "../components/Header";
@@ -9,6 +11,8 @@ export default {
   methods: {
     showMenu() {
       console.log("Öppna Meny via openMenu == true");
+      console.log(this.$store);
+      this.$store.commit("toggleMenu");
     }
   },
   components: {
@@ -26,5 +30,13 @@ export default {
   background-position: left, center, right;
   background-size: contain, auto, contain;
   height: inherit;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

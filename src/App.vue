@@ -1,9 +1,19 @@
 <template>
   <div id="app">
-    <!--Lägga NAV här eventuellt-->
     <router-view />
+    <HamburgerMenu />
+
+    <!--Lägga NAV här eventuellt-->
   </div>
 </template>
+<script>
+import HamburgerMenu from "./components/HamburgerMenu";
+export default {
+  components: {
+    HamburgerMenu
+  }
+};
+</script>
 
 <style lang="scss">
 * {
@@ -32,5 +42,9 @@
       color: #42b983;
     }
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 </style>
