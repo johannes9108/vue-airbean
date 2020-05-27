@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button class="hamburgerMenu" v-on:click="toggleMenu">MENU</button>
+    <button class="hamburgerMenu" v-on:click= "toggleMenu">MENU</button>
     <div id="menu" v-if="showMenu == true">
       <router-link to="/menu">
-        <h1>MENY</h1>
+        <h1 class="j">MENY</h1>
       </router-link>
       <router-link to="/about">
         <h1>VÅRT KAFFE</h1>
@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #menu {
   position: fixed;
   width: 100%;
@@ -55,6 +55,8 @@ export default {
 }
 
 h1 {
-  color: white;
+  color: white !important;
 }
+
+
 </style>

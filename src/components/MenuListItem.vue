@@ -25,7 +25,7 @@ export default {
     
     methods: {
         addItemToCart(){
-             this.$store.commit('saveItemToShoppingCart', this.id);
+             this.$store.commit('saveItemToShoppingCart', {id: this.id, price: this.price});
         }
     },
 
@@ -42,8 +42,7 @@ export default {
     justify-content: space-evenly;
     align-items: center;
 
-    
-    
+    text-align: left;
     }
 
     .menuItem button{

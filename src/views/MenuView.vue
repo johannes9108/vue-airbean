@@ -47,10 +47,12 @@ export default {
   background-color: #f3e4e1;
   display: grid;
   grid-template-rows: 14vh minmax(77vh, auto) 9vh;
+  
 }
 
 h1{
   margin-bottom: 2rem;
+  
 }
 
 .menuListItem{

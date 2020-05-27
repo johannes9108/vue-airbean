@@ -1,7 +1,6 @@
 <template>
   <div class="cartView">
     <Header :overLay="true" />
-    <!-- <section class="somebodyFixingThis">Cart</section> -->
     <ShoppingCart />
   </div>
 </template>
@@ -15,6 +14,10 @@ export default {
   components: {
     ShoppingCart,
     Header
+  },
+
+  computed:{
+
   }
 };
 </script>
@@ -27,5 +30,12 @@ export default {
   background-color: rgba(0, 0, 0, 0.8);
   display: grid;
   grid-template-rows: 14vh minmax(86vh, auto);
+}
+
+.cart{
+  background-color: white;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 </style>

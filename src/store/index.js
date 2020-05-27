@@ -9,23 +9,39 @@ export default new Vuex.Store({
     currentView: "",
     coffeeList: CoffeeData.menu,
 
-    shoppingCart: {}
+    shoppingCart: [],
+    shoppingCartSum: 0
   },
   mutations: {
     changeView(state, view) {
       state.currentView = view;
     },
 
-    saveItemToShoppingCart(state, id){
-      //om id inte finns i shoppingCart, sätt till 1 - annars inkrementera
-      state.shoppingCart[id] = (state.shoppingCart[id] || 0) + 1;
-      console.log(state.shoppingCart)
+    saveItemToShoppingCart(state, payload){
+      //kan snyggas till
+      let found = false;
+      state.shoppingCart.forEach(element => {
+        if(element.id == payload.id){
+          element.amount++;
+          found = true;
+        }
+      });
+
+      if(!found){
+        state.shoppingCart.push({
+          id:payload.id,
+          amount: 1,
+          price: payload.price
+        });
+      }
+      state.shoppingCartSum += payload.price;
+    },
+
+    getItemFromShoppingCartById(state, id){
+        return state.coffeeList.filter( (item) => item.id == id); 
     }
   },
   actions: {},
   modules: {},
-
-  getters: {
-  },
   
 });
