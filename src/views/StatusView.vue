@@ -1,13 +1,17 @@
 <template>
   <div class="statusView">
-    <h3>
+    <h4>
       Ordernummer
       <strong>{{generateRandomOrderNumber()}}</strong>
-    </h3>
+    </h4>
     <img :src="require('@/assets/graphics/drone.svg')" alt="drone" />
     <h1>Din beställning är på väg!</h1>
-    <h3>{{generateRandomETA()}} minuter</h3>
-    <button class="baseButton statusButton">Ok, cool!</button>
+    <h3>
+      <strong>{{generateRandomETA()}}</strong> minuter
+    </h3>
+    <router-link to="/menu">
+      <button>Ok, cool!</button>
+    </router-link>
   </div>
 </template>
 <script>
@@ -39,20 +43,50 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #e5674e;
+  height: 100%;
 
-  h3 {
+  color: white;
+
+  @import url("https://fonts.googleapis.com/css2?family=PT+Serif&family=Work+Sans:wght@300;400&display=swap");
+
+  h4 {
     margin-top: 3rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
   }
 
   img {
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 
   h1 {
-    margin-top: 10rem;
+    margin-top: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    font-family: "PT Serif", serif;
+    font-weight: 300;
+    font-size: 2.4rem;
   }
-}
-.statusButton {
-  background-color: white;
+
+  h3 {
+    font-weight: 300;
+  }
+
+  button {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+    font-family: "PT Serif", serif;
+    background-color: white;
+    border: none;
+    border-radius: 35px;
+    width: 13rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    padding: 1rem;
+  }
 }
 </style>
