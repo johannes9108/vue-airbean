@@ -1,40 +1,39 @@
 <template>
   <div class="menuView">
-    
     <Header />
-      <section>
-        <h1>MENU</h1>
-        <MenuListItem
-          class= "menuListItem"
-          v-for= "item in getCoffeeList"
-          v-bind:key= 'item.id'
-          v-bind:name= 'item.title'
-          v-bind:description= "item.desc"
-          v-bind:price= "item.price"
-          v-bind:id= "item.id">
-        </MenuListItem>
-      </section>
+    <section>
+      <h1>MENU</h1>
+      <MenuListItem
+        class="menuListItem"
+        v-for="item in getCoffeeList"
+        v-bind:key="item.id"
+        v-bind:name="item.title"
+        v-bind:description="item.desc"
+        v-bind:price="item.price"
+        v-bind:id="item.id"
+      ></MenuListItem>
+    </section>
     <Footer />
-    <router-view />
+    <transition name="cart-transition">
+      <router-view />
+    </transition>
   </div>
 </template>
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import MenuListItem from '../components/MenuListItem'
+import MenuListItem from "../components/MenuListItem";
 export default {
-
   data: () => ({}),
   components: {
     Header,
     Footer,
     MenuListItem
   },
-  methods: {
-  },
+  methods: {},
 
-  computed:{
-    getCoffeeList(){
+  computed: {
+    getCoffeeList() {
       return this.$store.state.coffeeList;
     }
   }
@@ -47,16 +46,21 @@ export default {
   background-color: #f3e4e1;
   display: grid;
   grid-template-rows: 14vh minmax(77vh, auto) 9vh;
-  
 }
 
-h1{
+h1 {
   margin-bottom: 2rem;
-  
 }
 
-.menuListItem{
+.menuListItem {
   margin-bottom: 2.2rem;
 }
-
+.cart-transition-enter-active,
+.cart-transition-leave-active {
+  transition: all 0.5s;
+}
+.cart-transition-enter,
+.cart-transition-leave-to {
+  transform: translateY(-100%);
+}
 </style>

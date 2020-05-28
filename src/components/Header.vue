@@ -1,7 +1,7 @@
 <template>
   <div class="headerComponent" :class="{overLay: overLay}">
     <!-- <HamburgerMenu v-if="!overLay" /> -->
-    <div class="hamburgerMenu" @click="toggleMenu()">
+    <div class="hamburgerMenu" @click="toggleMenu()" v-if="!overLay">
       <svg
         data-v-61dd7a3d
         xmlns="http://www.w3.org/2000/svg"

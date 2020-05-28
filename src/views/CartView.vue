@@ -16,9 +16,7 @@ export default {
     Header
   },
 
-  computed:{
-
-  }
+  computed: {}
 };
 </script>
 <style lang="scss" scoped>
@@ -32,7 +30,7 @@ export default {
   grid-template-rows: 14vh minmax(86vh, auto);
 }
 
-.cart{
+.cart {
   background-color: white;
   margin-right: 1rem;
   margin-left: 1rem;
