@@ -11,7 +11,8 @@ import HamburgerMenu from "./components/HamburgerMenu";
 export default {
   components: {
     HamburgerMenu
-  }
+  },
+  created() {}
 };
 </script>
 
