@@ -2,7 +2,7 @@
   <div class="menuView">
     <Header />
     <section>
-      <h1>MENU</h1>
+      <h1>MENY</h1>
       <MenuListItem
         class="menuListItem"
         v-for="item in getCoffeeList"
@@ -41,6 +41,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Work+Sans:wght@300;400&display=swap');
 .menuView {
   position: relative;
   background-color: #f3e4e1;
@@ -50,10 +52,12 @@ export default {
 
 h1 {
   margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-family: 'PT Serif', serif;
 }
 
 .menuListItem {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1rem;
 }
 .cart-transition-enter-active,
 .cart-transition-leave-active {

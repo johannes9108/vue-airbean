@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import CoffeeData from "../assets/data/menu.json";
+import CoffeDBAPI from "../javascript/api";
 
 Vue.use(Vuex);
 
@@ -8,7 +9,7 @@ export default new Vuex.Store({
   state: {
     currentView: "",
     coffeeList: CoffeeData.menu,
-
+    coffeListAPI: new CoffeDBAPI(),
     shoppingCart: [],
     shoppingCartSum: 0,
 
@@ -66,6 +67,19 @@ export default new Vuex.Store({
       }
     },
   },
-  actions: {},
+  getters: {
+    getTotalAmountOfOrder(state) {
+      let sum = 0;
+      state.shoppingCart.forEach((item) => {
+        sum += item.amount;
+      });
+      return sum;
+    },
+  },
+  actions: {
+    getAllCoffees(context) {
+      context.commit("setLoading", true);
+    },
+  },
   modules: {},
 });
