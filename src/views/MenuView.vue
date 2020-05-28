@@ -57,7 +57,7 @@ h1 {
 }
 
 .menuListItem {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1rem;
 }
 .cart-transition-enter-active,
 .cart-transition-leave-active {

@@ -25,7 +25,10 @@
         
         <!-- class="add" -->
         <div>
-            <h2>{{name}}</h2>
+            <div id="dottedTest">
+                <h2 id="nameOfCoffee">{{name}}</h2>
+                <div id="dots"></div>
+            </div>
             <p>{{description}}</p>
         </div>
         <h2 class="price">{{price}} kr</h2>
@@ -42,17 +45,18 @@ export default {
     },
 
     data: () => ({
-
     }),
     
     methods: {
         addItemToCart(){
-             this.$store.commit('saveItemToShoppingCart', {id: this.id, price: this.price});
-        }
+            this.$store.commit('saveItemToShoppingCart', {id: this.id, price: this.price});
+        },
     },
 
     computed:{
-
+        dotPadding(){
+            return '.'.repeat(30 - this.name.length);
+        }
     }
 }
 </script>
@@ -62,8 +66,8 @@ export default {
 
     .menuItem{
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
 
     text-align: left;
 
@@ -84,6 +88,24 @@ export default {
             margin-right: 1rem;
         }
     }
+    #nameOfCoffee{
+        // position: relative;
+        // top: 0.4rem;
+    }
+
+    #dots{
+        flex-grow:1;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+        margin-bottom: 0.35rem;
+
+    }
+
+    #dottedTest{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        //border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+    }
 
     .menuItem .add{
         margin-left: 0rem;
@@ -91,5 +113,13 @@ export default {
 
     h1{
         color: black;
+    }
+
+    .line{
+        position: relative;
+        bottom: 2.2rem;
+        margin-left: 7rem;
+        padding: 0;
+        border: 0;
     }
 </style>

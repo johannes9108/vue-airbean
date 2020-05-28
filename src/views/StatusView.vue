@@ -59,7 +59,7 @@ export default {
   
       font-family: 'PT Serif', serif;
       font-weight: 300;
-      font-size: 2.1rem;
+      font-size: 2.4rem;
       
     }
 
