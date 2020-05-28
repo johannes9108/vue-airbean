@@ -4,12 +4,15 @@
       <router-link to="/menu">
         <h1 class="j">MENY</h1>
       </router-link>
+      <hr>
       <router-link to="/about">
         <h1>VÅRT KAFFE</h1>
       </router-link>
+      <hr>
       <router-link to="/profile">
         <h1>MIN PROFIL</h1>
       </router-link>
+      <hr>
       <router-link to="/status">
         <h1>ORDERSTATUS</h1>
       </router-link>
@@ -35,13 +38,24 @@ export default {
   height: 100%;
   left: 0;
   top: 0;
-  background: black;
+  background: #2F2926;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transform-origin: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin-top: 1.1rem;
+  margin-bottom: 1.6rem;
+  width: 3.2rem;
+  border: solid rgba(255, 255, 255, 0.2) 0.1px;
 }
 
 .my-transition-enter-active {
@@ -81,5 +95,11 @@ export default {
 
 h1 {
   color: white !important;
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 120%;
+
 }
 </style>
