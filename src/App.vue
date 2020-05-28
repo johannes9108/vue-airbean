@@ -16,10 +16,21 @@ export default {
 </script>
 
 <style lang="scss">
+$font-headers: "PT Serif";
+$font-normal: "Work Sans";
 * {
+  font-family: $font-normal;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-headers;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -30,7 +41,11 @@ export default {
   background-color: #38846d;
   height: 100vh;
 }
-
+.baseButton {
+  border: transparent;
+  padding: 1rem;
+  border-radius: 25px;
+}
 #nav {
   padding: 30px;
 

@@ -21,7 +21,6 @@ export default new Vuex.Store({
     toggleMenu(state) {
       state.showMenu = state.showMenu ? false : true;
     },
-
     saveItemToShoppingCart(state, payload) {
       //kan snyggas till
       let found = false;
@@ -61,6 +60,15 @@ export default new Vuex.Store({
         state.shoppingCart = state.shoppingCart.filter((e) => e.id != obj.id);
       }
     },
+  },
+  getters:{
+    getTotalAmountOfOrder(state) {
+      let sum = 0;
+      state.shoppingCart.forEach(item=>{
+        sum+=item.amount
+      });
+      return sum;
+    }
   },
   actions: {},
   modules: {},
