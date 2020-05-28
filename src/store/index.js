@@ -13,6 +13,7 @@ export default new Vuex.Store({
     shoppingCartSum: 0,
 
     showMenu: false,
+    showProfile: false
   },
   mutations: {
     changeView(state, view) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     toggleMenu(state) {
       state.showMenu = state.showMenu ? false : true;
+    },
+    showProfile(state) {
+      state.showProfile = !state.showProfile
     },
 
     saveItemToShoppingCart(state, payload) {

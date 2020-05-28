@@ -1,8 +1,8 @@
 <template>
   <div class="profile-view">
     <Header />
-    <ProfileForm :customer="customer" v-if="!profileView" @changeView="changeView"/>
-    <ProfileInfo :customer="customer" v-else-if="profileView"/>
+    <ProfileForm :customer="customer" v-if="!this.$store.state.showProfile" @changeView="changeView"/>
+    <ProfileInfo :customer="customer" v-else/>
   </div>
 </template>
 <script>
@@ -16,19 +16,30 @@ export default {
         name: "",
         email: ""
       },
-      profileView: false
+      
     }
   },
 
   methods: {
     changeView() {
-      this.profileView = !this.profileView;
+      this.$store.commit("showProfile")
     }
   },
   components: {
     Header,
     ProfileInfo,
     ProfileForm
+  },
+
+  created() {
+    if(localStorage.getItem("loggedIn")) {
+      let customer = JSON.parse(localStorage.getItem("loggedIn"));
+      console.log(customer)
+      this.name = customer.name;
+      this.email = customer.email;
+    } else {
+      console.log("not found")
+    }
   }
 };
 </script>

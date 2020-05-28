@@ -34,7 +34,8 @@ export default {
 
   methods: {
     changeView() {
-      this.$emit("changeView");
+        localStorage.setItem("loggedIn", JSON.stringify(this.customer))
+        this.$emit("changeView");
     }
   }
 };
