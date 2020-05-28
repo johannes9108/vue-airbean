@@ -22,11 +22,9 @@
             </defs>
         </svg>
 
-        
-        <!-- class="add" -->
         <div>
             <div id="dottedTest">
-                <h2 id="nameOfCoffee">{{name}}</h2>
+                <h2>{{name}}</h2>
                 <div id="dots"></div>
             </div>
             <p>{{description}}</p>
@@ -66,7 +64,7 @@ export default {
 
     .menuItem{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
 
     text-align: left;
@@ -84,13 +82,8 @@ export default {
         }
 
         .price{
-            margin-bottom: 1rem;
             margin-right: 1rem;
         }
-    }
-    #nameOfCoffee{
-        // position: relative;
-        // top: 0.4rem;
     }
 
     #dots{
@@ -104,22 +97,14 @@ export default {
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
-        //border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
     }
 
     .menuItem .add{
-        margin-left: 0rem;
+        position: relative;
+        bottom: 0.2rem;
     }
 
     h1{
         color: black;
-    }
-
-    .line{
-        position: relative;
-        bottom: 2.2rem;
-        margin-left: 7rem;
-        padding: 0;
-        border: 0;
     }
 </style>
