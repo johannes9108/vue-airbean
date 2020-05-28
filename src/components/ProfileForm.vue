@@ -2,7 +2,7 @@
   <article class="login-form">
     <!-- Formuläret lägger sig ovan på menyn -->
     <div class="coffee-symbol">
-      <img src="../assets/graphics/Vector.png" alt />
+      <img src="../assets/graphics/coffee.svg" alt />
     </div>
     <h1>Välkommen till AirBean-familjen!</h1>
     <p>
@@ -56,10 +56,7 @@ export default {
   border-radius: 4px;
 
   .coffee-symbol {
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0.5rem;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
+    
     img {
       width: 1.8rem;
     }
