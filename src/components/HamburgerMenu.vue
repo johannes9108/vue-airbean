@@ -1,19 +1,22 @@
 <template>
   <transition name="my2-transition" mode="out-in">
-    <div id="menu" v-if="this.$store.state.showMenu == true" @click.capture="toggleMenu()">
-      <router-link to="/menu">
+    <div id="menu" v-if="this.$store.state.showMenu == true" >
+      <div class="close" @click.capture="toggleMenu()">
+        <img src="../assets/graphics/navicon.png" alt="">
+      </div>
+      <router-link to="/menu" @click.native="toggleMenu()">
         <h1 class="j">MENY</h1>
       </router-link>
       <hr>
-      <router-link to="/about">
+      <router-link to="/about" @click.native="toggleMenu()">
         <h1>VÅRT KAFFE</h1>
       </router-link>
       <hr>
-      <router-link to="/profile">
+      <router-link to="/profile" @click.native="toggleMenu()">
         <h1>MIN PROFIL</h1>
       </router-link>
       <hr>
-      <router-link to="/status">
+      <router-link to="/status" @click.native="toggleMenu()">
         <h1>ORDERSTATUS</h1>
       </router-link>
     </div>
@@ -45,6 +48,12 @@ export default {
   justify-content: center;
   align-items: center;
   transform-origin: center;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 
 a {

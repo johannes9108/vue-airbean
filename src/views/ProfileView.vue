@@ -35,8 +35,8 @@ export default {
     if(localStorage.getItem("loggedIn")) {
       let customer = JSON.parse(localStorage.getItem("loggedIn"));
       console.log(customer)
-      this.name = customer.name;
-      this.email = customer.email;
+      this.customer.name = customer.name;
+      this.customer.email = customer.email;
     } else {
       console.log("not found")
     }

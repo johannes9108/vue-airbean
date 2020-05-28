@@ -43,15 +43,15 @@ export default {
 
 <style lang="scss" scoped>
 .login-form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   position: absolute;
   align-items: center;
   top: 5rem;
   left: 5vw;
   background: #f3e4e1;
-  padding: 2rem 3px 2rem 3px;
+  padding: 2rem 3px 3rem 2px;
   width: 90%;
+  max-height: 85%;
   margin: auto;
   border-radius: 4px;
 
@@ -66,16 +66,17 @@ export default {
     font-family: PT Serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   p {
     font-family: "Work Sans", sans-serif;
     font-style: normal;
-    font-size: 18px;
-    margin: 1.5rem auto 0 auto;
+    font-size: 15px;
+    margin: .6rem auto 0 auto;
     color: #2f2926;
     width: 92%;
+    line-height: 1.6;
   }
 
   .form {
@@ -84,12 +85,17 @@ export default {
     text-align: left;
     margin-top: 2rem;
 
+    label {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
     input {
       border-radius: 7px;
       background: inherit;
       border: solid black 1px;
-      padding: 1.2rem 1rem;
-      margin-bottom: 1.2rem;
+      padding: .8rem 1rem;
+      margin-bottom: 1rem;
       width: 80vw;
       font-size: 18px;
       font-family: "Work Sans", sans-serif;
@@ -103,8 +109,9 @@ export default {
     -ms-user-select: none;
     user-select: none;
     margin-left: 7px;
-    align-self: flex-start;
+    justify-self: start;
     margin-top: 1rem;
+    
     input {
       opacity: 0;
       cursor: pointer;
@@ -125,15 +132,20 @@ export default {
   button {
     background: #2f2926;
     text-decoration: none;
+    border-style: none;
     border-radius: 30px;
-    padding: 0.8rem 2.5rem;
+    width: 80%;
+    margin: auto;
+    padding: 0.6rem 1rem;
     margin-top: 2rem;
+    
     h1 {
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-family: PT Serif;
       font-style: normal;
       font-weight: bold;
+      margin-bottom: 6px;
     }
   }
 }
