@@ -149,10 +149,5 @@ export default {
     }
   }
 
-@media screen and(max-width: 360px) {
-    .login-form {
-        top: 0;
-    }   
-} 
 }
 </style>
