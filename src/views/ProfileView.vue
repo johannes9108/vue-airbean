@@ -51,4 +51,11 @@ export default {
   grid-template-rows: 14vh minmax(86vh, auto);
   position: relative;
 }
+
+@media screen and(max-width: 360px) {
+  .profile-view {
+  grid-template-rows: 14vh minmax(86vh, auto) 25vh;
+  
+}
+}
 </style>

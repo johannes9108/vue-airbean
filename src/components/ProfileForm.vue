@@ -50,8 +50,8 @@ export default {
   left: 5vw;
   background: #f3e4e1;
   padding: 2rem 3px 3rem 2px;
+  height: 80%;
   width: 90%;
-  max-height: 85%;
   margin: auto;
   border-radius: 4px;
 
@@ -148,5 +148,11 @@ export default {
       margin-bottom: 6px;
     }
   }
+
+@media screen and(max-width: 360px) {
+    .login-form {
+        top: 0;
+    }   
+} 
 }
 </style>
