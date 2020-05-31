@@ -16,7 +16,7 @@
       <input type="text" v-model="customer.email" />
     </div>
     <label class="gdpr">
-      <input type="radio" name="radio" />
+      <input type="radio" name="radio" @change="gdprCheck = true" />
       <span class="checkmark"></span>
       GDPR Ok!
     </label>
@@ -30,12 +30,17 @@ export default {
   props: {
     customer: Object
   },
-  data: () => ({}),
+  data: () => ({
+    gdprCheck: false
+  }),
 
   methods: {
     changeView() {
-        localStorage.setItem("loggedIn", JSON.stringify(this.customer))
-        this.$emit("changeView");
+      if (this.gdprCheck) {
+        this.$store.dispatch("logIn", this.customer);
+      } else {
+        console.log("Accept GDPR");
+      }
     }
   }
 };
@@ -56,7 +61,6 @@ export default {
   border-radius: 4px;
 
   .coffee-symbol {
-    
     img {
       width: 1.8rem;
     }
@@ -73,7 +77,7 @@ export default {
     font-family: "Work Sans", sans-serif;
     font-style: normal;
     font-size: 15px;
-    margin: .6rem auto 0 auto;
+    margin: 0.6rem auto 0 auto;
     color: #2f2926;
     width: 92%;
     line-height: 1.6;
@@ -86,15 +90,15 @@ export default {
     margin-top: 2rem;
 
     label {
-        font-size: 13px;
-        margin-bottom: 4px;
+      font-size: 13px;
+      margin-bottom: 4px;
     }
 
     input {
       border-radius: 7px;
       background: inherit;
       border: solid black 1px;
-      padding: .8rem 1rem;
+      padding: 0.8rem 1rem;
       margin-bottom: 1rem;
       width: 80vw;
       font-size: 18px;
@@ -111,7 +115,7 @@ export default {
     margin-left: 7px;
     justify-self: start;
     margin-top: 1rem;
-    
+
     input {
       opacity: 0;
       cursor: pointer;
@@ -138,7 +142,7 @@ export default {
     margin: auto;
     padding: 0.6rem 1rem;
     margin-top: 2rem;
-    
+
     h1 {
       color: white;
       font-size: 1.6rem;
@@ -148,6 +152,5 @@ export default {
       margin-bottom: 6px;
     }
   }
-
 }
 </style>

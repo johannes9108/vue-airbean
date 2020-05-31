@@ -5,10 +5,10 @@
       <h1>MENY</h1>
       <MenuListItem
         class="menuListItem"
-        v-for="item in getCoffeeList"
+        v-for="item in getCoffeeListAPI"
         v-bind:key="item.id"
         v-bind:name="item.title"
-        v-bind:description="item.desc"
+        v-bind:description="item.description"
         v-bind:price="item.price"
         v-bind:id="item.id"
       ></MenuListItem>
@@ -35,14 +35,17 @@ export default {
   computed: {
     getCoffeeList() {
       return this.$store.state.coffeeList;
+    },
+    getCoffeeListAPI() {
+      console.log("Used API");
+      return this.$store.state.coffeeListAPI;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Work+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&family=Work+Sans:wght@300;400&display=swap");
 .menuView {
   position: relative;
   background-color: #f3e4e1;
@@ -53,7 +56,7 @@ export default {
 h1 {
   margin-bottom: 2rem;
   font-size: 2.5rem;
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
 }
 
 .menuListItem {

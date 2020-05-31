@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import CoffeeData from "../assets/data/menu.json";
 import CoffeDBAPI from "../javascript/api";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -9,14 +10,26 @@ export default new Vuex.Store({
   state: {
     currentView: "",
     coffeeList: CoffeeData.menu,
-    coffeListAPI: new CoffeDBAPI(),
+    coffeeListAPI: [],
+    coffeeListAPIHandle: new CoffeDBAPI("http://localhost:8081/"),
     shoppingCart: [],
     shoppingCartSum: 0,
-
+    loading: false,
     showMenu: false,
-    showProfile: false
+    showProfile: false,
+    currentCustomer: {},
   },
   mutations: {
+    resetShoppingCart(state) {
+      state.shoppingCart = [];
+      state.shoppingCartSum = 0;
+    },
+    setCurrentCustomer(state, customer) {
+      state.currentCustomer = customer;
+    },
+    setLoading(state, loading) {
+      state.loading = loading;
+    },
     changeView(state, view) {
       state.currentView = view;
     },
@@ -24,7 +37,7 @@ export default new Vuex.Store({
       state.showMenu = state.showMenu ? false : true;
     },
     showProfile(state) {
-      state.showProfile = !state.showProfile
+      state.showProfile = !state.showProfile;
     },
 
     saveItemToShoppingCart(state, payload) {
@@ -77,8 +90,61 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getAllCoffees(context) {
+    async getAllCoffees(context) {
       context.commit("setLoading", true);
+      let response = this.state.coffeeListAPIHandle.getAllCoffees();
+      console.log(response);
+      Promise.resolve(response)
+        .then((value) => {
+          this.state.coffeeListAPI = value;
+          context.commit("setLoading", false);
+        })
+        .catch("Couldnt fetch allCoffees");
+    },
+    async logIn(context, customer) {
+      context.commit("setLoading", true);
+      let response = this.state.coffeeListAPIHandle.logIn(customer);
+      console.log(response);
+      Promise.resolve(response)
+        .then((value) => {
+          context.commit("setCurrentCustomer", value);
+
+          console.log(value);
+          localStorage.setItem(
+            "loggedIn",
+            JSON.stringify(this.state.currentCustomer)
+          );
+          console.log(localStorage.getItem("loggedIn"));
+          context.commit("showProfile");
+          context.commit("setLoading", false);
+        })
+        .catch("Problems logging in");
+    },
+    async placeOrder(context, order) {
+      context.commit("setLoading", true);
+      let response = this.state.coffeeListAPIHandle.placeOrder(order);
+      console.log(response);
+      Promise.resolve(response)
+        .then((value) => {
+          console.log(value);
+          context.commit("setCurrentCustomer", value);
+          localStorage.setItem(
+            "loggedIn",
+            JSON.stringify(this.state.currentCustomer)
+          );
+          context.commit("resetShoppingCart");
+          router.push("status");
+
+          // console.log(value);
+          // localStorage.setItem(
+          //   "loggedIn",
+          //   JSON.stringify(this.state.currentCustomer)
+          // );
+          // console.log(localStorage.getItem("loggedIn"));
+          // context.commit("showProfile");
+          // context.commit("setLoading", false);
+        })
+        .catch("Problems logging in");
     },
   },
   modules: {},

@@ -12,7 +12,9 @@ export default {
   components: {
     HamburgerMenu
   },
-  created() {}
+  created() {
+    this.$store.dispatch("getAllCoffees");
+  }
 };
 </script>
 

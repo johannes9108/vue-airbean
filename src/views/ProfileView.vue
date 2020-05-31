@@ -1,28 +1,29 @@
 <template>
   <div class="profile-view">
     <Header />
-    <ProfileForm :customer="customer" v-if="!this.$store.state.showProfile" @changeView="changeView"/>
-    <ProfileInfo :customer="customer" v-else/>
+    <ProfileForm :customer="customer" v-if="!this.$store.state.showProfile" />
+    <!-- @changeView="changeView" -->
+    <ProfileInfo v-else />
   </div>
 </template>
 <script>
+// localStorage.clear();
 import Header from "../components/Header";
 import ProfileInfo from "../components/ProfileInfo";
-import ProfileForm from "../components/ProfileForm"
+import ProfileForm from "../components/ProfileForm";
 export default {
   data() {
     return {
       customer: {
         name: "",
         email: ""
-      },
-      
-    }
+      }
+    };
   },
 
   methods: {
     changeView() {
-      this.$store.commit("showProfile")
+      this.$store.commit("showProfile");
     }
   },
   components: {
@@ -32,13 +33,19 @@ export default {
   },
 
   created() {
-    if(localStorage.getItem("loggedIn")) {
-      let customer = JSON.parse(localStorage.getItem("loggedIn"));
-      console.log(customer)
-      this.customer.name = customer.name;
-      this.customer.email = customer.email;
+    if (localStorage.getItem("loggedIn")) {
+      this.$store.commit(
+        "setCurrentCustomer",
+        JSON.parse(localStorage.getItem("loggedIn"))
+      );
+      this.$store.state.showProfile = true;
+      // let customer = JSON.parse(localStorage.getItem("loggedIn"));
+      // console.log(customer);
+      // this.customer.id = customer.id;
+      // this.customer.name = customer.name;
+      // this.customer.email = customer.email;
     } else {
-      console.log("not found")
+      console.log("not found");
     }
   }
 };
@@ -54,8 +61,7 @@ export default {
 
 @media screen and(max-width: 360px) {
   .profile-view {
-  grid-template-rows: 14vh minmax(86vh, auto) 25vh;
-  
-}
+    grid-template-rows: 14vh minmax(86vh, auto) 25vh;
+  }
 }
 </style>

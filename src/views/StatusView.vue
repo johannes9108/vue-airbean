@@ -2,7 +2,7 @@
   <div class="statusView">
     <h4>
       Ordernummer
-      <strong>{{generateRandomOrderNumber()}}</strong>
+      <strong>{{this.$store.state.currentCustomer.orders[this.$store.state.currentCustomer.orders.length-1].orderNumber}}</strong>
     </h4>
     <img :src="require('@/assets/graphics/drone.svg')" alt="drone" />
     <h1>Din beställning är på väg!</h1>

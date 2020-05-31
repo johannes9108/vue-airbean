@@ -60,8 +60,28 @@ export default {
       if (this.getShoppingCartSum == 0) {
         console.log("ERROR. No items in cart");
       } else {
-        this.$router.push("status");
+        this.$store.dispatch("placeOrder", {
+          order: {
+            orderNumber: this.generateRandomOrderNumber(),
+            amount: this.getShoppingCartSum,
+            date: new Date()
+          },
+          customerId: this.$store.state.currentCustomer.id
+        });
       }
+    },
+    generateRandomOrderNumber() {
+      let orderNumber = "#";
+      let alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      for (let i = 0; i < 7; i++) {
+        orderNumber +=
+          alphanumeric[Math.floor(Math.random() * alphanumeric.length)];
+      }
+      return orderNumber;
+    },
+
+    generateRandomETA() {
+      return Math.floor(Math.random() * 20);
     }
   },
 

@@ -1,45 +1,80 @@
 export default class CoffeDBAPI {
-  constructor() {}
+  constructor(url) {
+    this.url = url;
+  }
 
-  //   getAllCoffees() {
-  //     try {
-  //       //   let promise = fetch(this.url, {
-  //       //       method: "GET",
-  //       //   });
+  async getAllCoffees() {
+    try {
+      let promise = fetch(this.url + "coffee", {
+        method: "GET",
+      });
 
-  //       //   // console.log("Promise: " + promise);
+      // console.log("Promise: " + promise);
 
-  //       //   let response = await promise;
-  //       //   // console.log("Response: " + response);
+      let response = await promise;
+      // console.log("Response: " + response);
 
-  //       //   let data = await response.json();
+      let data = await response.json();
 
-  //       //   // console.log("Data: " + data);
-  //       let x = [
-  //         {
-  //           id: "1",
-  //           title: "Caffe Latte",
-  //           description: "Stirred Coffe with Milk",
-  //           price: "40",
-  //         },
-  //         {
-  //           id: "2",
-  //           title: "Caffe Machiatto",
-  //           description: "Stirred Coffe with Milk",
-  //           price: "60",
-  //         },
-  //         {
-  //           id: "3",
-  //           title: "Caffe Latte",
-  //           description: "Stirred Coffe with Milk",
-  //           price: "50",
-  //         },
-  //       ];
-  //       return x;
-  //     } catch (error) {
-  //       console.log("Corrupted Data");
-  //     }
-  //   }
+      // console.log("Data: " + data);
+
+      return data;
+    } catch (error) {
+      console.log("Corrupted Data");
+    }
+  }
+  async logIn(customer) {
+    try {
+      let promise = fetch(this.url + "customer", {
+        method: "POST",
+        body: JSON.stringify(customer),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      //   console.log("Promise: " + promise);
+
+      let response = await promise;
+      //   console.log("Response: " + response);
+
+      let data = await response.json();
+
+      //   console.log("Data: " + data);
+
+      return data;
+    } catch (error) {
+      console.log("Corrupted Data");
+    }
+  }
+  async placeOrder(payload) {
+    console.log("Place order");
+    try {
+      let promise = fetch(this.url + "customer/" + 1, {
+        method: "PUT",
+        body: JSON.stringify(payload.order),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      //   console.log("Promise: " + promise);
+
+      let response = await promise;
+      //   console.log("Response: " + response);
+
+      let data = await response.json();
+
+      //   console.log("Data: " + data);
+
+      return data;
+    } catch (error) {
+      console.log("Corrupted Data");
+    }
+  }
+
   //   async getOrdersForCustomer(id) {}
   //   async createNewCustomer(name, email) {}
   //   async checkValidCustomer() {}
