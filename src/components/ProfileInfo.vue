@@ -22,14 +22,14 @@
         </div>
 
         <div class="data">
-          <p class="date">{{order.date}}</p>
+          <p class="date">{{replaceFormatting(order.date)}}</p>
           <p class="orderSum">{{order.amount}} kr</p>
         </div>
         <!-- {{order.orderNumber}} + {{order.amount}} + {{order.date}} -->
         </li>
       </ul>
       <div class="sumOrders">
-      <h3>Totalt spenderat:</h3><h3> {{sumOfAllOrders}} kr</h3>
+      <h3>Totalt spenderat</h3><h3> {{sumOfAllOrders}} kr</h3>
       </div>
     </article>
   </section>
@@ -38,7 +38,11 @@
 export default {
   data: () => ({}),
   created() {},
-  methods: {},
+  methods: {
+    replaceFormatting(input){
+      return input.replace(/-/g, '/');
+    }
+  },
   computed: {
     getLatestData() {
       return this.$store.state.currentCustomer;
@@ -109,6 +113,7 @@ export default {
         font-size: 14px;
         line-height: 120%;
         color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.2rem;
       }
 
       .orderSumText{
@@ -117,6 +122,7 @@ export default {
         font-size: 12px;
         line-height: 120%;
         color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.3rem;
       }
 
       .date{
