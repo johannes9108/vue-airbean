@@ -4,7 +4,8 @@
       Ordernummer
       <strong>{{this.$store.state.currentCustomer.orders[this.$store.state.currentCustomer.orders.length-1].orderNumber}}</strong>
     </h4>
-    <img :src="require('@/assets/graphics/drone.svg')" alt="drone" />
+    <!-- <img :src="require('@/assets/graphics/drone.svg')" alt="drone" /> -->
+    <div class="helicopter"></div>
     <h1>Din beställning är på väg!</h1>
     <h3>
       <strong>{{generateRandomETA()}}</strong> minuter
@@ -87,6 +88,30 @@ export default {
     font-weight: bold;
 
     padding: 1rem;
+  }
+}
+.helicopter {
+  // background: blueviolet;
+  width: 217px;
+  height: 120px;
+  background-repeat: no-repeat;
+  animation: heli 0.2s infinite ease;
+}
+@keyframes heli {
+  0% {
+    background-image: url("../assets/graphics/droneRotateCenter.svg");
+  }
+  25% {
+    background-image: url("../assets/graphics/droneRotate1.svg");
+  }
+  50% {
+    background-image: url("../assets/graphics/droneRotateCenter.svg");
+  }
+  75% {
+    background-image: url("../assets/graphics/droneRotate2.svg");
+  }
+  100% {
+    background-image: url("../assets/graphics/droneRotateCenter.svg");
   }
 }
 </style>

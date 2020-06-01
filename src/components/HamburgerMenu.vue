@@ -1,21 +1,21 @@
 <template>
-  <transition name="my2-transition" mode="out-in">
-    <div id="menu" v-if="this.$store.state.showMenu == true" >
+  <transition name="my-transition" mode="out-in">
+    <div id="menu" v-if="this.$store.state.showMenu == true">
       <div class="close" @click.capture="toggleMenu()">
-        <img src="../assets/graphics/navicon.png" alt="">
+        <img src="../assets/graphics/navicon.png" alt />
       </div>
       <router-link to="/menu" @click.native="toggleMenu()">
         <h1 class="j">MENY</h1>
       </router-link>
-      <hr>
+      <hr />
       <router-link to="/about" @click.native="toggleMenu()">
         <h1>VÅRT KAFFE</h1>
       </router-link>
-      <hr>
+      <hr />
       <router-link to="/profile" @click.native="toggleMenu()">
         <h1>MIN PROFIL</h1>
       </router-link>
-      <hr>
+      <hr />
       <router-link to="/status" @click.native="toggleMenu()">
         <h1>ORDERSTATUS</h1>
       </router-link>
@@ -41,7 +41,7 @@ export default {
   height: 100%;
   left: 0;
   top: 0;
-  background: #2F2926;
+  background: #2f2926;
 
   display: flex;
   flex-direction: column;
@@ -109,6 +109,5 @@ h1 {
   font-weight: bold;
   font-size: 30px;
   line-height: 120%;
-
 }
 </style>
