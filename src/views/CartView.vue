@@ -27,6 +27,6 @@ export default {
 
   background-color: rgba(0, 0, 0, 0.8);
   display: grid;
-  grid-template-rows: 14vh minmax(86vh, auto);
+  grid-template-rows: 9vh minmax(86vh, auto);
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="shoppingCart" id="test">
     <section class="cart">
+      <div class="triangle"></div>
       <div class="title">
         <h1>DIN BESTÄLLNING</h1>
       </div>
@@ -120,22 +121,22 @@ button {
   margin-top: 2rem;
 }
 .shoppingCart {
+  // background-color: red;
   //   background-color: rgba(0, 0, 0, 0.8);
-  top: 10%;
+
   width: 100%;
   height: 100%;
   padding: 1rem;
 }
 .cart {
+  position: relative;
   display: grid;
   grid-template-rows: 15% 60% 10% 15%;
 
   border-radius: 5px;
+  border: 1px solid transparent;
   background-color: white;
-  margin-right: 1rem;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  height: 95%;
+  height: 100%;
 }
 .cartButton {
   color: white;
@@ -159,5 +160,16 @@ h1 {
 
 .names {
   text-align: left;
+}
+.triangle {
+  width: 0;
+  height: 0;
+  // background-color: red;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid white;
+  position: absolute;
+  right: 12px;
+  top: -16px;
 }
 </style>
