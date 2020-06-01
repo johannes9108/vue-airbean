@@ -9,12 +9,28 @@
     </article>
     <article class="order">
       <h2>Orderhistorik</h2>
-      <ul>
+      <ul class="orderList">
         <li
           v-for="(order,index) in this.$store.state.currentCustomer.orders"
           v-bind:key="index"
-        >{{order.orderNumber}} + {{order.amount}} + {{order.date}}</li>
+          v-bind:style= "index != ordersLength ? 'border-bottom: 1px solid  rgba(172, 172, 172, 0.5)' : 'border-bottom: 1px solid  rgba(172, 172, 172, 1)' "
+          class="orderItem"
+        >
+        <div>
+          <p class="orderNumber"><strong>{{order.orderNumber}}</strong></p>
+          <p class="orderSumText">Ordersumma</p>
+        </div>
+
+        <div class="data">
+          <p class="date">{{order.date}}</p>
+          <p class="orderSum">{{order.amount}} kr</p>
+        </div>
+        <!-- {{order.orderNumber}} + {{order.amount}} + {{order.date}} -->
+        </li>
       </ul>
+      <div class="sumOrders">
+      <h3>Totalt spenderat:</h3><h3> {{sumOfAllOrders}} kr</h3>
+      </div>
     </article>
   </section>
 </template>
@@ -26,12 +42,25 @@ export default {
   computed: {
     getLatestData() {
       return this.$store.state.currentCustomer;
+    },
+
+    sumOfAllOrders(){
+      let sum = 0;
+      this.$store.state.currentCustomer.orders.forEach(element => {
+        sum += element.amount;
+      });
+      return sum;
+    },
+
+    ordersLength(){
+      return this.$store.state.currentCustomer.orders.length-1;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&family=Work+Sans:wght@300;400&display=swap");
 .container {
   display: flex;
   flex-direction: column;
@@ -58,16 +87,96 @@ export default {
     }
   }
 
+  .orderItem{
+     display: flex;
+     justify-content: space-evenly;
+     text-align: left;
+     margin-top: 1rem;
+
+     border-bottom: 1px solid  rgba(172, 172, 172, 0.5);;
+
+      .data{
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: flex-end;
+          margin-left: 8rem;
+      }
+
+      .orderNumber{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 120%;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .orderSumText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 120%;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .date{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 120%;
+        text-align: right;
+
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .orderSum{
+        font-size: 12px;
+        line-height: 120%;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.5);
+      }
+  }
+
+  .sumOrders{
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
   .order {
-    align-self: flex-start;
-    margin-left: 2rem;
+    align-self: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    
     h2 {
-      color: white;
-      font-family: PT Serif;
+      font-family: 'PT Serif', serif;
       font-style: normal;
-      font-weight: 600;
-      font-size: 28px;
+      font-weight: bold;
+      font-size: 22px;
       line-height: 120%;
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+    }
+
+    h3{
+      font-style: normal;
+       font-family: 'Work Sans', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 120%;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 1rem;
+    }
+
+    p{
+      color: white;
+    }
+
+    h4{
+      color: white;
     }
   }
 }
