@@ -18,7 +18,7 @@
         >
         <div>
           <p class="orderNumber"><strong>{{order.orderNumber}}</strong></p>
-          <p class="orderSumText">Ordersumma</p>
+          <p class="orderSumText">total ordersumma</p>
         </div>
 
         <div class="data">
