@@ -51,7 +51,7 @@ export default class CoffeDBAPI {
   async placeOrder(payload) {
     console.log("Place order");
     try {
-      let promise = fetch(this.url + "customer/" + 1, {
+      let promise = fetch(this.url + "customer/" + payload.customerId, {
         method: "PUT",
         body: JSON.stringify(payload.order),
         headers: {

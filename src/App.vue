@@ -14,6 +14,20 @@ export default {
   },
   created() {
     this.$store.dispatch("getAllCoffees");
+    if (localStorage.getItem("loggedIn")) {
+      this.$store.commit(
+        "setCurrentCustomer",
+        JSON.parse(localStorage.getItem("loggedIn"))
+      );
+      this.$store.state.showProfile = true;
+      // let customer = JSON.parse(localStorage.getItem("loggedIn"));
+      // console.log(customer);
+      // this.customer.id = customer.id;
+      // this.customer.name = customer.name;
+      // this.customer.email = customer.email;
+    } else {
+      console.log("not found");
+    }
   }
 };
 </script>
