@@ -120,6 +120,7 @@ export default {
 .counterIndicator {
   position: absolute;
   background-color: #e5674e;
+  color: white;
   right: 0;
   top: 0;
   width: 35%;
